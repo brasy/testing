@@ -23,3 +23,24 @@ http://my-mind.github.io/
 
 modem manager
 http://www.linuxfromscratch.org/blfs/view/svn/general/ModemManager.html
+
+makefile:
+http://blog.csdn.net/lhf_tiger/article/category/954650 http://blog.csdn.net/xiaominghimi/article/details/7603012 
+
+cmake语法
+http://blog.csdn.net/kl222/article/details/7530430 
+
+康 林(译)2012-04-28
+Cmake是一个用于生成交叉平台编译工程的工具。它类似autoconf。它产生你所选择的编译环境的本地makefile和workspaces。
+英文原文地址：http://www.cmake.org/cmake/help/syntax.html
+CMakeLists.txt的写法 ：http://blog.csdn.net/gxuan/article/details/7701035 
+
+熟悉 CMake（二）—— 以一个实例说明 CMakeLists.txt 文件的编写 ：
+http://blog.csdn.net/lanchunhui/article/details/51307806
+
+https://leetcode.com/  
+github user：brasy
+LeetCode总结：http://blog.csdn.net/lanxu_yy/article/details/17848219 
+
+VMware Ubuntu安装详细过程 
+http://blog.csdn.net/u013142781/article/details/50529030
