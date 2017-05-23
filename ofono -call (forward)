@@ -1,0 +1,121 @@
+    		     oFono安装和启动
+             原创作品，允许转载，转载时请务必以超链接形式标明文章 原始出处 、作者信息和本声明。否则将追究法律责任。
+             http://zhenhua2000.blog.51cto.com/3167594/768356             		   
+             安装和启动oFono
+             1. git clone git://git.kernel.org/pub/scm/network/ofono/ofono.git
+             2. cd ofono
+             3. ./bootstrap-configure 或者./configure. configure过程中你可以需要装一些依赖包, 如：sudo apt-get install libudev-dev libdbus-1-dev libcap-ng-dev libtool
+             4. make; sudo make install
+             5. sudo src/ofonod –nd ‘*’ 就可以启动oFono了
+             安装和启动phonesim
+             如果手上没有3G modem的话，可以装phonesim电话模拟器。
+             1. git clone git://git.kernel.org/pub/scm/network/ofono/phonesim.git
+             2. cd phonesim
+             3. ./bootstrap-configure; 中间你可以需要装Qt开发包，如sudo apt-get install libqt
+             4-dev4. make; sudo make install
+             5. src/phonesim –gui src/default.xml  这一步用来启动phonesim
+             启动phonesim后你会发现什么都没发生，但实际上phonesim已经在port 12345建立了一个sock连接。你需要做的是修改/usr/local/etc/ofono/modem.conf （或/etc/ofono/modem.conf）。
+             [phonesim]
+             Driver=phonesim
+             Address=127.0.0.1
+             Port=12345
+             修改保存后再启动oFono。
+             ofonod[2460]: src/gprs.c:ofono_gprs_context_driver_register() driver: 0x810a588, name: hsomodem  
+             ofonod[2460]: src/radio-settings.c:ofono_radio_settings_driver_register() driver: 0x810a5a4, name: hsomodem  
+             ofonod[2460]: src/gprs.c:ofono_gprs_context_driver_register() driver: 0x810a538, name: mbmmodem  
+             ofonod[2460]: src/stk.c:ofono_stk_driver_register() driver: 0x810a554, name: mbmmodem  
+             ofonod[2460]: src/voicecall.c:ofono_voicecall_driver_register() driver: 0x810a440, name: hfpmodem  
+             ofonod[2460]: src/network.c:ofono_netreg_driver_register() driver: 0x810a4c0, name: hfpmodem  
+             ofonod[2460]: src/call-volume.c:ofono_call_volume_driver_register() driver: 0x810a4f8, name: hfpmodem  
+             ofonod[2460]: src/voicecall.c:ofono_voicecall_driver_register() driver: 0x810a3a0, name: calypsomodem  
+             ofonod[2460]: src/stk.c:ofono_stk_driver_register() driver: 0x810a3f0, name: calypsomodem  
+             ofonod[2460]: src/gprs.c:ofono_gprs_context_driver_register() driver: 0x810a36c, name: huaweimodem  
+             ofonod[2460]: src/radio-settings.c:ofono_radio_settings_driver_register() driver: 0x810a338, name: nwmodem  
+             ofonod[2460]: src/voicecall.c:ofono_voicecall_driver_register() driver: 0x810a200, name: atmodem  
+             ofonod[2460]: src/modem.c:ofono_devinfo_driver_register() driver: 0x810a29c, name: atmodem  
+             ofonod[2460]: src/call-barring.c:ofono_call_barring_driver_register() driver: 0x810a250, name: atmodem  
+             ofonod[2460]: src/call-forwarding.c:ofono_call_forwarding_driver_register() driver: 0x810a020, name: atmodem  
+             ofonod[2460]: src/call-meter.c:ofono_call_meter_driver_register() driver: 0x810a060, name: atmodem  
+             ofonod[2460]: src/call-settings.c:ofono_call_settings_driver_register() driver: 0x8109f20, name: atmodem  
+             ofonod[2460]: src/phonebook.c:ofono_phonebook_driver_register() driver: 0x810a280, name: atmodem  
+             ofonod[2460]: src/ssn.c:ofono_ssn_driver_register() driver: 0x810a290, name: atmodem  
+             ofonod[2460]: src/ussd.c:ofono_ussd_driver_register() driver: 0x810a1b0, name: atmodem  
+             ofonod[2460]: src/sms.c:ofono_sms_driver_register() driver: 0x8109fc0, name: atmodem  
+             ofonod[2460]: src/sim.c:ofono_sim_driver_register() driver: 0x810a140, name: atmodem  
+             ofonod[2460]: src/stk.c:ofono_stk_driver_register() driver: 0x810a18c, name: atmodem  
+             ofonod[2460]: src/network.c:ofono_netreg_driver_register() driver: 0x810a0e0, name: atmodem  
+             ofonod[2460]: src/cbs.c:ofono_cbs_driver_register() driver: 0x8109fe8, name: atmodem  
+             ofonod[2460]: src/call-volume.c:ofono_call_volume_driver_register() driver: 0x810a2c8, name: atmodem  
+             ofonod[2460]: src/gprs.c:ofono_gprs_driver_register() driver: 0x810a2f0, name: atmodem  
+             ofonod[2460]: src/gprs.c:ofono_gprs_context_driver_register() driver: 0x810a304, name: atmodem  
+             ofonod[2460]: src/modem.c:ofono_devinfo_driver_register() driver: 0x81097ac, name: isimodem  
+             ofonod[2460]: src/phonebook.c:ofono_phonebook_driver_register() driver: 0x810979c, name: isimodem 
+             ofonod[2460]: src/network.c:ofono_netreg_driver_register() driver: 0x81097e0, name: isimodem  
+             ofonod[2460]: src/voicecall.c:ofono_voicecall_driver_register() driver: 0x8109820, name: isimodem  
+             ofonod[2460]: src/sms.c:ofono_sms_driver_register() driver: 0x8109880, name: isimodem  
+             ofonod[2460]: src/cbs.c:ofono_cbs_driver_register() driver: 0x81098a0, name: isimodem  
+             ofonod[2460]: src/sim.c:ofono_sim_driver_register() driver: 0x81098c0, name: isimodem  
+             ofonod[2460]: src/ssn.c:ofono_ssn_driver_register() driver: 0x8109904, name: isimodem  
+             ofonod[2460]: src/ussd.c:ofono_ussd_driver_register() driver: 0x8109910, name: isimodem  
+             ofonod[2460]: src/call-forwarding.c:ofono_call_forwarding_driver_register() driver: 0x8109940, name: isimodem 
+             ofonod[2460]: src/call-settings.c:ofono_call_settings_driver_register() driver: 0x8109960, name: isimodem  
+             ofonod[2460]: src/call-barring.c:ofono_call_barring_driver_register() driver: 0x8109988, name: isimodem  
+             ofonod[2460]: src/call-meter.c:ofono_call_meter_driver_register() driver: 0x81099a0, name: isimodem  
+             ofonod[2460]: src/radio-settings.c:ofono_radio_settings_driver_register() driver: 0x81099c8, name: isimodem 
+             ofonod[2460]: src/gprs.c:ofono_gprs_driver_register() driver: 0x81099dc, name: isimodem  
+             ofonod[2460]: src/gprs.c:ofono_gprs_context_driver_register() driver: 0x81099f0, name: isimodem  
+             ofonod[2460]: src/modem.c:ofono_modem_driver_register() driver: 0x8109760, name: isimodem  
+             ofonod[2460]: src/modem.c:ofono_modem_create() name: phonesim, type: phonesim  
+             ofonod[2460]: src/modem.c:set_modem_property() modem 0x84ea770 property Address  
+             ofonod[2460]: src/modem.c:set_modem_property() modem 0x84ea770 property Port  
+             ofonod[2460]: plugins/phonesim.c:phonesim_probe() 0x84ea770  
+             ofonod[2460]: plugins/bluetooth.c:manager_properties_cb()  
+             ofonod[2460]: plugins/bluetooth.c:parse_adapters()  
+             ofonod[2460]: plugins/bluetooth.c:parse_adapters() Calling GetProperties on /org/bluez/1398/hci0  
+             ofonod[2460]: plugins/bluetooth.c:parse_devices()  
+             ofonod[2460]: plugins/bluetooth.c:adapter_properties_cb() Adapter Address: 00:22:69:C6:0F:4D, Path: /org/bluez/1398/hci0  
+             ofonod[2460]: Using device: /org/bluez/1398/hci0/dev_00_BD_3A_69_60_AB, devaddr: 00:BD:3A:69:60:AB, adapter: 00:22:69:C6:0F:4D  
+             ofonod[2460]: src/modem.c:ofono_modem_create() name: hfp/002269C60F4D_00BD3A6960AB, type: hfp  
+             ofonod[2460]: plugins/hfp.c:hfp_register_ofono_handsfree() Registering oFono Agent to bluetooth daemon
+             上面的log中包含以下这一行，说明oFono能够正确检测到phonesim。
+             ofonod[2460]: plugins/phonesim.c:phonesim_probe() 0x84ea770
+             Power on phonesim
+             1. cd ofono/test
+             2. ./list-modem
+             xxx@xxx:~/ofono/test$ ./list-modems  
+             [ /hfp/002269C60F4D_00BD3A6960AB ]
+             Interfaces = 
+             Powered = 0 
+             Name = Nokia N900
+             Features = 
+             Online = 0
+             [ /phonesim ]      
+             Interfaces = 
+             Powered = 0  
+             Features =   
+             Online = 0
+             上面的log中说明有两个modem存在，一个是和蓝牙连接的HFP modem，另一个是phonesim。
+             3. ./enable-modem
+             xxx@xxx:~/ofono/test$ ./enable-modem /phonesim 
+             Connecting modem /phonesim...
+             enable-modem用来power on modem，启动后的modem处于offline离线状态，例如飞行模式就是处于offline。enable-modem后phonesim就会显示一个界面了，
+             以后你可以通过它做很多事情。：-）
+             4. ./online-modem
+             xxx@xxx:~/ofono/test$ ./online-modem /phonesim  
+             Setting modem /phonesim online...
+             online-modem会开启modem的所有功能，如GPRS，SMS等等。
+             5. 让我们打一个电话吧。
+             xxx@xxx:~/ofono/test$ ./test-voicecall /phonesim 10086  
+             Using modem /phonesim 
+             Dialing 10086...  
+             Dialing in progress, got obj: /phonesim/voicecall01  
+             State: dialing, Number: 10086   
+             Voice Call [ /phonesim/voicecall01 ] Added         
+             State = dialing        
+             LineIdentification = 10086        
+             Multiparty = 0
+             Voicecall property: 'State' changed to 'alerting' 
+             Voicecall property: 'State' changed to 'active'
+             Voicecall property: 'StartTime' changed to '2010-09-17T09:27:54+0800'
+             恭喜，你的第一个电话打通了！ ；-）
+
