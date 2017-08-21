@@ -1,0 +1,25 @@
+js
+1995年，Brendan Eich设计，为了给网页添加动态效果。
+1. ECMAScript是一种语言标准，而JavaScript是网景公司对ECMAScript标准的一种实现。最新版ECMAScript 6标准（简称ES6）已经在2015年6月正式发布
+2. 第一种方法由<script>...</script>包含的代码就是JavaScript代码，它将直接被浏览器执行。第二种方法是把JavaScript代码放到一个单独的.js文件，然后在HTML中通过<script src="..."></script>引入这个文件
+3. 工具：下载安装google chrome，点击菜单“查看(View)”-“开发者(Developer)”-“开发者工具(Developer Tools)”，浏览器窗口就会一分为二，下方就是开发者工具。先点击“控制台(Console)“，在这个面板里可以直接输入JavaScript代码，按回车后执行。
+要查看一个变量的内容，在Console中输入console.log(a);，回车后显示的值就是变量的内容。
+语法：
+1. js的每个语句以;结束，语句块用{...}。但是，JavaScript并不强制要求在每个语句的结尾加;。浏览器中负责执行JavaScript代码的引擎会自动在每个语句的结尾补上；，但是补上执行结果有风险。
+2. 支持多层嵌套(if...)，4空格缩进。注释用// ,  /*...*/。 js严格大小写敏感。
+3. 数据类型：number，bool (true, false)， 数组(new Array(1, 2, 3))，
+   string ：字符串是以单引号'或双引号"括起来的任意文本，转义字符\，字符串连接+，模板字符串${str}。
+            toUpperCase()把一个字符串全部变为大写, toLowerCase()把一个字符串全部变为小写, indexOf()会搜索指定字符串出现的位置, substring()返回指定索引区间的子串
+   
+   对象(一组由键-值组成的无序集合，对象变量.属性名)
+   变量(变量名是大小写英文、数字、$和_的组合，不能用数字开头，申明一个变量用var语句)
+   strict模式'use strict'(强制var声明变量)
+4. 
+NaN表示Not a Number，当无法计算结果时用NaN表示
+Infinity; // Infinity表示无限大，当数值超过了JavaScript的Number所能表示的最大值时，用null表示一个空的值，而undefined表示值未定义
+
+
+
+
+
+
